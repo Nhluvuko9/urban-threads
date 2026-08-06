@@ -9,18 +9,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="body">
     <nav>
         <div class="logo-area">
-            <img src="./src/assets/urban-threads-logo.png" alt="Urban Threads logo" class="logo">
+            <a href="/" data-link>
+                <img src="./src/assets/ut-logo.png" alt="Urban Threads logo" class="logo">
+            </a>
         </div>
-        <div class="catergories">
-            <ul>
-                <li><a href="/products" data-link>Women's</a></li>
-                <li><a href="/mensCollection" data-link>Men's</a></li>
-                <li><a href="/shoes" data-link>Shoes</a></li>
-                <li><a href="accessories" data-link>Accessories</a></li>
-            </ul>
+        <div class="nav-links">
+            <div class="catergories">
+                <ul>
+                    <li><a href="/" data-link>Home</a></li>
+                    <li><a href="/products" data-link>Women's</a></li>
+                    <li><a href="/mensCollection" data-link>Men's</a></li>
+                    <li><a href="/shoes" data-link>Shoes</a></li>
+                    <li><a href="/accessories" data-link>Accessories</a></li>
+                </ul>
+            </div>
         </div>
         <div class="personal-details">
             <div class="search-bar">
@@ -40,20 +45,12 @@
             </div>
         </div>
     </nav>
-    <main>
-        <button id="seed-btn" style="padding: 10px; background: rgb(221, 50, 50); color: white;">Seed Firestone Database</button>
 
-        <!-- <div class="hero-banner">
-            <img src="" alt="">
-        </div> -->
 
-        <div class="titles">
-            <h2 class="page-title">Women's Collection</h2>
-            <h5>Hoodies and jackets</h5>
+    <main id="main-content">
+        <div class="homepage-banner">
+            <img src="./src/assets/homebg.png" alt="Homepage Banner" class="homepage-banner">
         </div>
-        <div id="products-container" class="products-grid">
-        </div>
-        <div id="mens-products-container" class="products-grid"></div>
 
     </main>
 

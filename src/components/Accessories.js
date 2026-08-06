@@ -1,67 +1,73 @@
 import { db } from "../firebase-config.js";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
-const accessoryProducts = [
-    {
-        name: "Retro mesh sneakers",
-        price: 99.90,
-        category: "Womens Shoes",
-        description: "Mesh upper with cow-print trim and rubber sole",
-        imageURL: "https://i.pinimg.com/1200x/d4/f0/e6/d4f0e64579ad08dcdf508e1edb8128cc.jpg"
-    },
-    {
-        name: "Classic suede sneakers",
-        price: 69.90,
-        category: "Women's Shoes",
-        description: "Classic pink suede design with comfortable cushioning",
-        imageURL: "https://i.pinimg.com/1200x/5e/36/99/5e3699d529d130830ce70380a9816a58.jpg"
-    },
-    {
-        name: "Runner mesh sneakers",
-        price: 89.90,
-        category: "Women's Shoes",
-        description: "Olive and espresso mesh upper with rubber sole and cushioned insole",
-        imageURL: "https://i.pinimg.com/736x/27/6a/e2/276ae2517cb1f0e3b4d853db00480e33.jpg"
-    },
-    {
-        name: "Rodeo muse fringe heel",
-        price: 90.00,
-        category: "Women's Shoes",
-        description: "Natural cow-print pattern with fringe detail and suede trim heel",
-        imageURL: "https://i.pinimg.com/736x/76/00/ed/7600eddd42650f02e21a0ecb0dae07b6.jpg"
-    },
-    {
-        name: "Leather-upper sandals",
-        price: 75.90,
-        category: "Women's Shoes",
-        description: "Elegant pastel blueleather upper with silver detail and elasticated ankle strap",
-        imageURL: "https://i.pinimg.com/1200x/92/5a/7f/925a7f0e75ab778fe0c556f42bb79af9.jpg"
-    },
-    {
-        name: "Studded pony-hair knee-high boots",
-        price: 170.00,
-        category: "Women's Shoes",
-        description: "Mixed suede and leather knee-high boots with studded detail and stiletto heel",
-        imageURL: "https://i.pinimg.com/1200x/8c/05/7c/8c057c34da11ed1d284954117d10657b.jpg"
-    },
-];
+// const accessoryProducts = [
+//     {
+//         name: " Minimalist leather belt",
+//         price: 49.99,
+//         category: "Women's Accessories",
+//         description: "Classic cognac leather buckle-less belt ",
+//         imageURL: "https://i.pinimg.com/736x/02/d6/d0/02d6d00309eb1e9d451c63ecc5f371c4.jpg"
+//     },
+//     {
+//         name: "Aviator sunglasses",
+//         price: 45.90,
+//         category: "Women's Accessories",
+//         description: "Tortoise shell avaiator sunglasses",
+//         imageURL: "https://i.pinimg.com/1200x/65/d6/74/65d674596cece2e11cae49c5c31a26c3.jpg"
+//     },
+//     {
+//         name: "Bracelet",
+//         price: 59.90,
+//         category: "Mens Accessories",
+//         description: "Stainless steel cuban link bracelet with lobster clasp",
+//         imageURL: "https://i.pinimg.com/1200x/aa/62/21/aa62213e1d95f7deb786996a4fe77b1d.jpg"
+//     },
+//     {
+//         name: "Baseball cap",
+//         price: 49.99,
+//         category: "Mens Accessories",
+//         description: "Two-tone New York Yankees baseball cap",
+//         imageURL: "https://i.pinimg.com/736x/38/f1/d9/38f1d98233d7dd925dc7cce4149c327a.jpg"
+//     },
+//     {
+//         name: "Mochi bag",
+//         price: 139.99,
+//         category: "Women's Accessories",
+//         description: "Royal blue suede mochi bag",
+//         imageURL: "https://i.pinimg.com/1200x/a1/c5/42/a1c54266c86db3f9e6f23586edd5fc5c.jpg"
+//     },
+//     {
+//         name: "Shoulder bag",
+//         price: 99.90,
+//         category: "Women's Accessories",
+//         description: " Olive green, ruched, slouchy shoulder bag",
+//         imageURL: "https://i.pinimg.com/1200x/51/24/fd/5124fdd32c6892de67698f0252b20ed7.jpg"
+//     },
+    
+    
+// ];
 
 export const displayAccessoriesProducts = async () => {
-    const container = document.getElementById("accessories-container");
-    if (!container) {
-        console.error("The element #accessories-container was not found in the html dom");
+    const womensContainer = document.getElementById("womens-accessories-container");
+    const mensContainer = document.getElementById("mens-accessories-container");
+    if (!womensContainer || !mensContainer) {
+        console.error("One or more required elements were not found in the html dom");
         return;
     }
 
     try {
         const querySnapshot = await getDocs(collection(db, "accessoriesCollection"));
 
+        womensContainer.innerHTML= "";
+        mensContainer.innerHTML= "";
+        
         if (querySnapshot.empty) {
-            container.innerHTML = "<p>Error loading our product catalog. Please try again later.</p>";
+            womensContainer.innerHTML = "<p>Error loading our product catalog. Please try again later.</p>";
+            mensContainer.innerHTML = "<p>Error loading our product catalog. Please try again later.</p>";
             return;
         }
-
-        container.innerHTML= "";
+        
         querySnapshot.forEach((doc) => {
             const product = doc.data();
             const productCardHTML = `
@@ -78,7 +84,13 @@ export const displayAccessoriesProducts = async () => {
                     </div>
                 </div>
             `;
-            container.innerHTML += productCardHTML;
+
+            if (product.category === "Women's Accessories") {
+                womensContainer.innerHTML += productCardHTML;
+            } else if (product.category === "Mens Accessories") {
+                mensContainer.innerHTML += productCardHTML;
+            }
+            
         });
     } catch (error) {
         console.error("Error fetching items from database:", error);

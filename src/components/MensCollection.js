@@ -48,8 +48,8 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 
 
 export const displayMensProducts = async () => {
-    const container = document.getElementById("mens-products-container");
-    if (!container) {
+    const Container = document.getElementById("mens-products-container");
+    if (!Container) {
         console.error("The element #mens-products-container was not found in the html dom");
         return;
     }
@@ -58,11 +58,11 @@ export const displayMensProducts = async () => {
         const querySnapshot = await getDocs(collection(db, "mensCollection"));
 
         if (querySnapshot.empty) {
-            container.innerHTML = "<p>Error loading our product catalog. Please try again later.</p>";
+            Container.innerHTML = "<p>Error loading our product catalog. Please try again later.</p>";
             return;
         }
 
-        container.innerHTML= "";
+        Container.innerHTML= "";
         querySnapshot.forEach((doc) => {
             const product = doc.data();
             const productCardHTML = `
@@ -79,7 +79,10 @@ export const displayMensProducts = async () => {
                     </div>
                 </div>
             `;
-            container.innerHTML += productCardHTML;
+            if (product.category === "Hoodies and Jackets") {
+                Container.innerHTML += productCardHTML;
+            }
+            // Container.innerHTML += productCardHTML;
         });
     } catch (error) {
         console.error("Error fetching items from database:", error);
@@ -96,6 +99,6 @@ export async function database() {
         }
         alert("All products have successfully added into Firestone!")
     } catch (error) {
-        console.error("WError adding products to database:", error)
+        console.error("Error adding products to database:", error)
     }
 }

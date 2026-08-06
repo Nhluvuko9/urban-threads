@@ -2,10 +2,6 @@ import { db } from "../firebase-config.js";
 import { collection, getDocs } from "firebase/firestore";
 
 
-// const titlesContainer = document.getElementById("titles");
-// if (!titlesContainer) {
-//     console.warn("The element #titles was not found in the html dom");
-// }
 export const displayProducts = async (products1) => {
     const container = document.getElementById("products-container");
     if (!container) {
@@ -42,16 +38,13 @@ export const displayProducts = async (products1) => {
                     </div>
                 </div>
             `;
+            
             container.innerHTML += productCardHTML;
         });
     } catch (error) {
         console.error("Error fetching items from database:", error);
     }
 };
-
-// document.addEventListener("DOMContentLoaded", () =>{
-//     displayProducts();
-// });
 
 
 export async function database() {

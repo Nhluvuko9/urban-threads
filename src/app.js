@@ -8,17 +8,18 @@ import { router, navigateTo } from "./Router.js";
 import { database } from "./components/MensCollection.js";
 import { homePage } from "./components/Home.js";
 
-const seedButton = document.getElementById("seed-btn");
-if (seedButton) {
-    seedButton.addEventListener("click", () => {
-        seedButton.disabled = true;
-        seedButton.innerText = "Uploading data...";
-        database();
-    });
-}
+// const seedButton = document.getElementById("seed-btn");
+// if (seedButton) {
+//     seedButton.addEventListener("click", () => {
+//         seedButton.disabled = true;
+//         seedButton.innerText = "Uploading data...";
+//         database();
+//     });
+// }
 
 document.addEventListener("click", (event) => {
-    if(event.target.matches("[data-link]")) {
+    const link = event.target.matches("[data-link]");
+    if(link) {
         event.preventDefault();
         navigateTo(event.target.getAttribute("href"));
     }
@@ -26,7 +27,7 @@ document.addEventListener("click", (event) => {
 
 window.addEventListener("popstate", router);
 
-window.addEventListener("DOMContentLoader", router);
+window.addEventListener("DOMContentLoaded", router);
 
 // displayShoesProducts();
 // console.log("displayShoesProducts has been executed")
