@@ -10,16 +10,6 @@ const pageView = {
             <img src="./src/assets/homebg.png" alt="Homepage Banner" class="homepage-banner">
         </div>
     `,
-    // "/products": () => `
-    //                 <li><a href="/" data-link>Home</a></li>
-    //                 <li><a href="/products" data-link>Women's</a></li>
-    //                 <li><a href="/mensCollection" data-link>Men's</a></li>
-    //                 <li><a href="/shoes" data-link>Shoes</a></li>
-    //                 <li><a href="/accessories" data-link>Accessories</a></li>
-    //             </ul>
-    //         </div>
-    //     </div>
-    // `,
     "/products": () => `  
         <div id="titles">
             <h1 class="page-title">Women's Collection</h1>

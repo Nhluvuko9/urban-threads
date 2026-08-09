@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Input */
+.login-container input:focus:invalid {
+    border: 1px solid rgb(240, 19, 19);
+}
+.login-container input:focus:valid {
+    border: 1px solid green;
+}
+
+/* Login page styling */
+.login {
+    background-image: url(/src/assets/zebra-print.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    max-height: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+#authStatus {
+    background-color: rgb(245, 229, 209);
+    width: 800px;
+    height: 100px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 230px;
+    top: 15px;
+}
+.hidden p {
+    font-size: 1.15rem;
+    padding-bottom: 8px;
+}
+
+#signOutBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: rgb(245, 229, 209);
+    width: 800px;
+    height: 430px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    left: 230px;
+    top: 45px;
+    padding: 20px;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 30px 0;
+}
+#loginForm label{
+    padding-bottom: 8px;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+#loginForm input {
+    width: 500px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    padding: 0 15px;
+}
+
+.sign-in-btn, #signOutBtn{
+    width: 80px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.login-container p {
+    font-size: 1.25rem;
+    padding: 25px 0 8px 0;
+}
+
+#createAccBtn {
+    width: 150px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
