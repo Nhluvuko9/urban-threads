@@ -30,8 +30,8 @@ export const displayShoesProducts = async () => {
                         <h3 class="product-title">${product.name}</h3>
                         <p class="product-description">${product.description}</p>
                         <div class="product-footer">
-                            <span class="product-price">$${product.price.toFixed(2)}</span>
-                            <button class="add-to-cart-btn">Add to cart</button>
+                            <span class="product-price">R${product.price.toFixed(2)}</span>
+                            <button class="add-to-cart-btn" data-id="${doc.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.imageURL}">Add to cart</button>
                         </div>
                     </div>
                 </div>

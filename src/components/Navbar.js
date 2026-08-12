@@ -24,7 +24,7 @@ auth.onAuthStateChange((user) => {
     if(user) {
         currentUser = user;
         const userName = user.email.split('@')[0];
-        accountTooltip.textContent = `Hello, ${username}`;
+        accountTooltip.textContent = `Hello, ${userName}`;
         authLink.removeAttribute('href');
     } else {
         currentUser = null;
@@ -47,3 +47,8 @@ authLink.addEventListener('click', (event) => {
         });
     }
 })
+
+// Handle shopping bag icon
+// authLink.addEventListener('click', (event) => {
+//     if ()
+// })

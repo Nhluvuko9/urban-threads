@@ -35,10 +35,13 @@
                     <span class="tooltip-text">Search</span>
                 </div>
             </div>
-            <div class="tooltip">
-                <span class="material-symbols-outlined hover">shopping_bag</span>
-                <span class="tooltip-text">Cart</span>
-            </div>
+             <a href="/cart" class="cart-link" data-link>
+                 <div class="tooltip cart-container">
+                     <span class="material-symbols-outlined hover">shopping_bag</span>
+                     <span id="cart-quantity" class="cart-quantity">0</span>
+                     <span class="tooltip-text">Cart</span>
+                 </div>
+             </a>
             <a href="login.html" id="authLink" style="text-decoration: none;">
                 <div class="tooltip">
                     <span class="material-symbols-outlined hover">account_circle</span>
@@ -56,6 +59,7 @@
 
     </main>
 
+    
     <script type="module" src="src/app.js"></script>
 </body>
 </html>

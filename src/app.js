@@ -5,14 +5,6 @@ import { router, navigateTo } from "./Router.js";
 import { database } from "./components/MensCollection.js";
 import { homePage } from "./components/Home.js";
 
-// const seedButton = document.getElementById("seed-btn");
-// if (seedButton) {
-//     seedButton.addEventListener("click", () => {
-//         seedButton.disabled = true;
-//         seedButton.innerText = "Uploading data...";
-//         database();
-//     });
-// }
 
 document.addEventListener("click", (event) => {
     const link = event.target.matches("[data-link]");

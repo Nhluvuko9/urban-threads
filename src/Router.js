@@ -1,8 +1,8 @@
-// import { homePage } from "./components/Home";
 import { displayProducts } from "./components/Products";
 import { displayMensProducts } from "./components/MensCollection";
 import { displayShoesProducts } from "./components/Shoes";
 import { displayAccessoriesProducts } from "./components/Accessories";
+import { showCart } from "./components/Cart";
 
 const pageView = {
     "/": () => `
@@ -46,6 +46,20 @@ const pageView = {
             <h3 class="page-title"> Men's Accessories</h3>
         </div>
         <div id="mens-accessories-container" class="products-grid"></div>
+    `,
+    "/cart": () => `
+        <div class="cart">
+            <div class="cart-container">
+                <h1>In your Bag</h1>
+        
+                <div id="cartItemsList"></div>
+        
+                <div class="cartSummary">
+                    <h3>Subtotal: R <span id="total-price">0.00</span></h3>
+                    <button class="checkout-btn">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
     `
 };
 
@@ -67,6 +81,13 @@ export const router = async () => {
             await displayShoesProducts();
         } else if (path === "/accessories") {
             await displayAccessoriesProducts();
+        } else if (path === "/cart") {
+            const user = firebase.auth().currentUser;
+            if (!user) {
+                document.getElementById("cartItemsList").innerHTML = "<p>Login to view your cart.</p>";
+                return;
+            } 
+            showCart(user.uid);
         }
       } catch (error) {
         console.error(`Error rendering page ${path}:`, error);

@@ -65,10 +65,14 @@
     padding: 20px;
 }
 
+h1 {
+    padding-bottom: 30px;
+}
+
 #loginForm {
     display: flex;
     flex-direction: column;
-    padding: 30px 0 30px 0;
+    align-items: center;
 }
 #loginForm label{
     padding-bottom: 8px;
@@ -83,7 +87,7 @@
     padding: 0 15px;
 }
 
-.sign-in-btn, #signOutBtn{
+#sign-in-btn, #signOutBtn{
     width: 80px;
     height: 30px;
     font-weight: 500;
