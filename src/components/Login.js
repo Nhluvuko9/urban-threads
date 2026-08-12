@@ -51,6 +51,8 @@ loginForm.addEventListener("submit", async (event) => {
     });
 });
 
+
+// Establish new user with Firebase
 createAccBtn.addEventListener('click', (event) => {
     event.preventDefault();
     const email = emailInput.value;

@@ -9,7 +9,7 @@ const firebaseConfig = {
 };
 
 if (!firebase.app.length) {
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig); 
 }
 const auth = firebase.auth();
 

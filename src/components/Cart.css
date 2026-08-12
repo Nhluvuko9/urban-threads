@@ -5,27 +5,25 @@
 }
 
 .cart {
-    background-image: url(/src/assets/zebra-print.jpg);
-    background-size: cover;
     width: 100%;
-    height: 600px;
-    max-height: 1000px;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .cart-container {
-    background-color: rgb(245, 229, 209);
-    width: 800px;
-    height: 800px;
-    border: none;
-    border-radius: 10px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center;
-    justify-content: center; */
-    position: relative;
-    left: 230px;
-    top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));   
+}
+
+.checkout-btn, .remove-btn {
+    width: 80px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
 }

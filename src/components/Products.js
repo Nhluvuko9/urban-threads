@@ -1,9 +1,12 @@
 import { db } from "../firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, writeBatch } from "firebase/firestore";
 
 
 export const displayProducts = async (products1) => {
+    // DOM element
     const container = document.getElementById("products-container");
+
+    // Ensuring page has loaded completely
     if (!container) {
         console.warn("The element #products-container was not found in the html dom");
         return;
@@ -22,8 +25,12 @@ export const displayProducts = async (products1) => {
         }
 
         container.innerHTML= "";
+
+        // Firebase product loop 
         querySnapshot.forEach((doc) => {
             const product = doc.data();
+            
+            // HTML for product card display
             const productCardHTML = `
                 <div class="product-card" data-id="${doc.id}">
                     <img src="${product.imageURL}" alt="${product.name}" class="product-image">
@@ -39,23 +46,10 @@ export const displayProducts = async (products1) => {
                 </div>
             `;
             
+            // Organising product cards in container
             container.innerHTML += productCardHTML;
         });
     } catch (error) {
         console.error("Error fetching items from database:", error);
     }
 };
-
-
-export async function database() {
-    try {
-        const productsCollection = collection(db, "products1");
-        for (const product of products) {
-            const docRef = await addDoc(productsCollection, product)
-            console.log(`Product added sucessfully with ID: ${docRef.id}`)
-        }
-        alert("All products have successfully added into Firestone!")
-    } catch (error) {
-        console.error("Error adding products to database:", error)
-    }
-}

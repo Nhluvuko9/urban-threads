@@ -1,0 +1,40 @@
+@media screen and (max-width: 768px) {
+    body {
+        display: flex;
+        overflow-x: hidden;
+    }
+    nav {
+        flex-direction: column;
+        height: auto;
+        /* width: 100%; */
+        gap: 15px;
+        padding: 15px;
+        border-right: 2px solid #eddfc7;
+        overflow-x: hidden;
+    }
+
+    .catergories ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    li  {
+	    width: 100%;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    h4 {
+        font-size: 1.3rem;
+    }
+
+    .product-image {
+        height: 300px;
+    }
+
+    
+}

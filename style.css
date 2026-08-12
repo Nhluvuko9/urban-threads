@@ -87,16 +87,31 @@ a {
 
 /* MAIN PAGE COLLECTION */
 main {
-	/* background-image: url(./src/assets/zebra-print.jpg); */
 	background-color: #fdfefe;
-	background-repeat: repeat-y;
 	width: 100%;
 }
 
 .homepage-banner {
-	width: 100%;
-	height: 100%;
-	
+	display: flex;
+	flex-direction: column;
+}
+
+.top-banner, .middle-banner, .bottom-banner {
+	display: flex;
+	flex-direction: row;
+}
+
+.image1, .image6{
+	width: 50%;
+	height: 800px;
+}
+.image2, .image5 {
+	width: 50%;
+}
+
+.image3, .image4 {
+	width: 50%;
+	height: 800px;
 }
 
 #titles {
