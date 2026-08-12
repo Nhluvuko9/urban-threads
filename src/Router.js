@@ -11,16 +11,16 @@ const pageView = {
     "/": () => `
         <div class="homepage-banner">
             <div class="top-banner">
-                <img src="./src/assets/img3.jpg" alt="Homepage image" class="image3">
-                <img src="./src/assets/img4.png" alt="Homepage image" class="image4">
+                <img src="/img3.jpg" alt="Homepage image" class="image3">
+                <img src="/img4.png" alt="Homepage image" class="image4">
             </div>
             <div class="middle-banner">
-                <img src="./src/assets/img5.png" alt="Homepage image" class="image5">
-                <img src="./src/assets/img2.jpg" alt="Homepage image" class="image2">
+                <img src="/img5.png" alt="Homepage image" class="image5">
+                <img src="/img2.jpg" alt="Homepage image" class="image2">
             </div>
             <div class="bottom-banner">
-                <img src="./src/assets/img1.jpg" alt="Homepage image" class="image1">
-                <img src="./src/assets/img6.jpg" alt="Homepage image" class="image6">
+                <img src="/img1.jpg" alt="Homepage image" class="image1">
+                <img src="/img6.jpg" alt="Homepage image" class="image6">
             </div>
         </div>
     `,

@@ -47,8 +47,3 @@ authLink.addEventListener('click', (event) => {
         });
     }
 })
-
-// Handle shopping bag icon
-// authLink.addEventListener('click', (event) => {
-//     if ()
-// })
