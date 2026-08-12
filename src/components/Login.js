@@ -1,16 +1,5 @@
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB4F31clzqEAEmNG9ena5fy6ob3eCCxRzk",
-  authDomain: "urban-threads-nhluvuko.firebaseapp.com",
-  projectId: "urban-threads-nhluvuko",
-  storageBucket: "urban-threads-nhluvuko.firebasestorage.app",
-  messagingSenderId: "276110476778",
-  appId: "1:276110476778:web:47f9226eb63f0311b21e93",
-  measurementId: "G-6M6KG2923V"
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+import { auth } from "../firebase-config.js";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 // DOM elements
 const loginForm = document.getElementById("loginForm");
@@ -21,73 +10,74 @@ const signOutBtn = document.getElementById("signOutBtn");
 const createAccBtn = document.getElementById("createAccBtn");
 
 // Auth state change
-auth.onAuthStateChanged((user) => {
+onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
-        updateStoreForSignedInUser(true);
+        updateStore(true);
         console.log("User is signed in:", user.email);
     } else {
         // User is signed out
-        function updateStoreForSignedOutUser() {
-            if (authStatus) authStatus.innerText = "signed Out";
-        };
+        updateStore(false);
     }
 });
 
 // Sign in the user with Firebase
-loginForm.addEventListener("submit", async (event) => {
-    event.preventDefault(); 
-    const email = emailInput.value;
-    const password = passwordInput.value;
+if (loginForm) {
+    loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault(); 
+        const email = emailInput?.value || "";
+        const password = passwordInput?.value || "";
 
-    auth.signInWithEmailAndPassword(email, password)
-    .then((userInfo) => {
-        alert("Successfully logged in!");
-        window.location.href = "index.html";
-    })
-    .catch((error) => {
-        console.error("Loginfailed:", error.message);
-        alert(error.message);
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            alert("Successfully logged in!");
+            window.location.href = "index.html";
+        } catch (error) {
+            console.error("Login failed:", error.message);
+            alert(error.message);
+        }
     });
-});
-
+}
 
 // Establish new user with Firebase
-createAccBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    const email = emailInput.value;
-    const password = passwordInput.value;
-    
-    if (!email || !password) {
-        alert("Please enter an email and password to create an account.")
-        return;
-    }
+if (createAccBtn) {
+    createAccBtn.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const email = emailInput?.value || "";
+        const password = passwordInput?.value || "";
+        
+        if (!email || !password) {
+            alert("Please enter an email and password to create an account.")
+            return;
+        }
 
-    auth.createUserWithEmailAndPassword(email, password)
-    .then((userInfo) => {
-        alert("Account created successfully!");
-        window.location.href = "index.html";
-    })
-    .catch((error) => {
-        alert("Error creating account:" + error.message);
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            alert("Account created successfully!");
+            window.location.href = "index.html";
+        } catch (error) {
+            alert("Error creating account:" + error.message);
+        }
     });
-});
+}
 
 // Sign out user with Firebase
-signOutBtn.addEventListener('click', () => {
-    auth.signOut()
-    .then(() => {
-        alert("Successfully signed out!");
-    })
-    .catch((error) => {
-        console.error("Sign out error:", error.message)
+if (signOutBtn) {
+    signOutBtn.addEventListener('click', async () => {
+        try {
+            await signOut(auth);
+            alert("Successfully signed out!");
+        } catch (error) {
+            console.error("Sign out error:", error.message)
+        }
     });
-});
+}
 
 const updateStore = (isLoggedIn) => {
+    if (!authStatus) return;
     if (isLoggedIn) {
         authStatus.classList.remove('hidden');
     } else {
         authStatus.classList.add('hidden');
     }
- }
+}

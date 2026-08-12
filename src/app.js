@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { router, navigateTo } from "./Router.js";
 import { database } from "./components/Shoes.js";
 import "./index.js";
+import "./components/Navbar.js";
 
 // Handle all data-links events
 document.addEventListener("click", (event) => {
